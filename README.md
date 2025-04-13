@@ -1,5 +1,8 @@
 # Álláskereső-Portál
 
+Indításhoz a gyökérmappa termináljában kell az npm install és ng serve (vagy npm install)
+Visual Studio Codeban open folder, terminal majd npm install és npm start vagy ng serve
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.6.
 
 ## Development server
