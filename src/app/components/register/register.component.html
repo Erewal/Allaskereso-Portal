@@ -1,0 +1,62 @@
+<div class="signup-container">
+    <h1>Készíts fiókot</h1>
+
+    @if(ShowForm){
+        <form [formGroup]="signUpform" (ngSubmit)="signUp()" class="signup-form">
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email">
+                <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+            <div formGroupName="name" class="namefield">
+                <mat-form-field class="name-field">
+                    <mat-label>Vezetéknév</mat-label>
+                    <input matInput formControlName="lastname">
+                    <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field>
+            </div>
+            <div formGroupName="name" class="namefield">
+                <mat-form-field class="name-field">
+                    <mat-label>Keresztnév</mat-label>
+                    <input matInput formControlName="firstname">
+                    <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field>
+            </div>
+            <mat-form-field>
+                <mat-label>Jelszó</mat-label>
+                <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" />
+                <button
+                type="button"
+                  mat-icon-button
+                  matSuffix
+                  (click)="clickEvent($event)"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide()"
+                >
+                  <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Jelszó megerősítés</mat-label>
+                <input matInput [type]="hide() ? 'password' : 'text'" formControlName="Repassword" />
+                <button
+                type="button"
+                  mat-icon-button
+                  matSuffix
+                  (click)="clickEvent($event)"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide()"
+                >
+                  <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+              @if(signUpError){
+                <div class="error-message">
+                    {{signUpError}}
+                </div>
+              }
+                <button mat-flat-button type="submit" class="gomb">Regisztráció</button>
+                <button mat-flat-button [routerLink]="['/login']" class="gomb">Van már fiókod?</button>
+        </form>
+    }
+</div>

@@ -1,0 +1,33 @@
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    margin-top: 15px;
+  }
+
+  .card{
+    width: 500px;      
+    max-width: 90vw;    
+    margin: 0 auto;
+  }
+
+  .card img{
+    max-width: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: auto;     
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  button{
+    background-color: orange !important;
+  }
+
+  @media (max-width: 768px) {
+    .card {  
+        max-width: none;
+        margin: 1rem;
+      }
+  }

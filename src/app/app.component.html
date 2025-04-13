@@ -1,0 +1,34 @@
+<mat-sidenav-container class="hatter">
+    <mat-sidenav #sidenav>
+        <app-navbar [sidenav]="sidenav" [isLoggedIn]="isLoggedIn" (logoutEvent)="logout()" ></app-navbar>
+    </mat-sidenav>
+    <mat-sidenav-content class="hatter2">
+        <mat-toolbar>
+            <button mat-button (click)="onToggleSidenav(sidenav)" class="menu-toggle-button">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <div>Álláskereső Portál</div>
+            <nav>
+                <ul>
+                    <li><a class="munka" routerLink="/home">Munkák</a></li>
+                    @if (!isLoggedIn) {
+                        <li class="regisztracio"><a routerLink="/register">Regisztráció</a></li>
+                    }
+                    @if(!isLoggedIn){
+                        <li class="bejelentkezes"><a routerLink="/login">Bejelentkezés</a></li>
+                    }
+                    @if(isLoggedIn){
+                        <li class="profil"><a class="kijelentkezes" routerLink="/profile">Profil</a></li>
+                    }
+                    @if(isLoggedIn){
+                        <li><a class="kijelentkezes" href="#" (click)="$event.preventDefault(); logout()">Kijelentkezés</a></li>
+                    }
+                </ul>
+            </nav>
+        </mat-toolbar>
+        <router-outlet />
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+ 

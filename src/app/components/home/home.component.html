@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div id="hatter">
+        <div id="tartalom">
+            <h1>Álláskereső Portál</h1>
+            <h2>Rengeteg munka található!</h2>
+        </div>
+        <div class="container">
+          <mat-accordion class="my-accordion">
+            @for (munkak of munka; track $index) {
+              <div class="panel-container">
+                <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+                  <mat-expansion-panel-header>
+                      <mat-panel-title>{{munkak.munkaNeve}}</mat-panel-title>
+                      <mat-panel-description>
+                        {{munkak.munkahelyszin | pipes  }}  {{panelOpenState() ? '' : ''}}
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <p>{{munkak.munkaLeiras}}</p>
+                  <button mat-flat-button (click)="Atvitel(munkak)"[ngStyle]="{'color': munkak.surgosmunkaeroKell ? 'red': 'white'}">Jelentkezés</button>
+                </mat-expansion-panel>
+              </div>
+            }
+          </mat-accordion>
+        </div>          
+    </div>
+</body>
+</html>
