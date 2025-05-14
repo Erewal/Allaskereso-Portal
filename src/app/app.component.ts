@@ -23,7 +23,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  title = 'allaskereso_portal';
+  title = 'allaskereso-portal';
   isLoggedIn=false;
 
   constructor(){}

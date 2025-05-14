@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'allaskereso_portal' title`, () => {
+  it(`should have the 'allaskereso-portal' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('allaskereso_portal');
+    expect(app.title).toEqual('allaskereso-portal');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, allaskereso_portal');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, allaskereso-portal');
   });
 });
