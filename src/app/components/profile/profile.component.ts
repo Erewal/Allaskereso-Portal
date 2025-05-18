@@ -155,7 +155,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     const updatedData: Partial<Felhasznalo> = {
       name: {
         firstname: this.profileForm.value.firstname,
-        lastname: this.userData.name.lastname
+        lastname: this.profileForm.value.lastname
       }
     };
 

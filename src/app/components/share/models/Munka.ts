@@ -6,5 +6,6 @@ export interface Munka {
     munkaber?: string;                
     munkajelentkezesiHatarido?: string; 
     munkacegNeve?: string;               
-    surgosmunkaeroKell: boolean;              
+    surgosmunkaeroKell: boolean;   
+    varos: string;           
 }

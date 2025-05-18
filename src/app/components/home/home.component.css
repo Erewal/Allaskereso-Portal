@@ -64,4 +64,17 @@ button{
       flex: 0 0 100%;
   }
   }
-  
+
+.filter .mat-form-field-outline {
+  border-radius: 20px;
+  margin-left: 15px;
+}
+.filter{
+  margin-left: 8px; 
+}
+
+
+.filter .mat-form-field-wrapper {
+  border-radius: 20px;  
+  overflow: hidden;    
+}

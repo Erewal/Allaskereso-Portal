@@ -3,6 +3,15 @@
     <h1>Álláskereső Portál</h1>
     <h2>Rengeteg munka található!</h2>
   </div>
+  
+  <mat-form-field appearance="fill" class="filter">
+  <mat-label>Szűrés típus szerint</mat-label>
+  <mat-select [(ngModel)]="filterType" (selectionChange)="szuresValtozott()">
+    <mat-option value="osszes">Összes</mat-option>
+    <mat-option value="surgos">Csak sürgős</mat-option>
+    <mat-option value="budapest">Csak budapesti</mat-option>
+  </mat-select>
+  </mat-form-field>
   <div class="container">
     <mat-accordion class="my-accordion">
       @for (munkak of munka(); track $index) {
