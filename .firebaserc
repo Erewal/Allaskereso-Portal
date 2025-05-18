@@ -1,6 +1,7 @@
 {
   "projects": {
-    "allaskereso": "allaskereso-portal"
+    "allaskereso": "allaskereso-portal",
+    "default": "allaskereso-portal"
   },
   "targets": {},
   "etags": {}
