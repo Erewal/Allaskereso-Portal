@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,RouterLink } from '@angular/router';
-import { Munka } from '../share/models/Adat';
+import { Munka } from '../share/models/Munka';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { PipesPipe } from '../share/pipes/pipes.pipe';
+import { CegnevePipe } from '../share/pipes/cegneve.pipe';
 @Component({
   selector: 'app-job-detail',
   standalone: true,
@@ -12,8 +13,9 @@ import { PipesPipe } from '../share/pipes/pipes.pipe';
     MatCardModule,
     MatButtonModule,
     MatSnackBarModule,
+    CegnevePipe,
     PipesPipe,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './job-detail.component.html',
   styleUrls: ['./job-detail.component.css']

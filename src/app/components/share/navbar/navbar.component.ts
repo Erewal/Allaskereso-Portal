@@ -2,6 +2,9 @@ import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {MatListModule} from '@angular/material/list';
 import { MatSidenav } from '@angular/material/sidenav';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../services/auth.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-navbar',
   imports: [
@@ -16,7 +19,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   @Input() sidenav!: MatSidenav;
   @Input() isLoggedIn: boolean = false;
   @Output() logoutEvent = new EventEmitter<void>();
-  constructor(){
+  constructor(private authService: AuthService){
   console.log("constructor called");
   }  
 
@@ -32,8 +35,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     }
   }
   logout(){
-    localStorage.setItem('isLoggedIn', 'false');
-    window.location.href ='/home';
+  this.authService.signOut().then(() => {
+    this.logoutEvent.emit(),
     this.closeMenu();
+    });
   }
 }

@@ -1,1 +1,51 @@
-<p>profile works!</p>
+@if (loading) {
+  <mat-spinner></mat-spinner>
+} @else if (error) {
+  <p class="error">{{ error }}</p>
+} @else if (userData) {
+  <mat-card class="profile-card">
+    <h1>Profil</h1>
+    <mat-card-header>
+      <mat-card-title>
+    <strong>Név: </strong>{{ userData.name.lastname }} {{ userData.name.firstname }}
+      </mat-card-title>
+    </mat-card-header>
+
+    @if (!editMode) {
+      <mat-card-content>
+        <p><strong>Email:</strong> {{ userData.email }}</p>
+      </mat-card-content>
+    } @else {
+      <mat-card-content>
+        <form [formGroup]="profileForm" (ngSubmit)="saveChanges()">
+          <mat-form-field appearance="fill">
+            <mat-label>Vezetéknév</mat-label>
+            <input matInput formControlName="lastname" />
+            @if (profileForm.get('lastname')?.hasError('required') && profileForm.get('lastname')?.touched) {
+              <mat-error>Kötelező mező</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Keresztnév</mat-label>
+            <input matInput formControlName="firstname" />
+            @if (profileForm.get('firstname')?.hasError('required') && profileForm.get('firstname')?.touched) {
+              <mat-error>Kötelező mező</mat-error>
+            }
+          </mat-form-field>
+
+          <button mat-button color="primary" type="submit" [disabled]="!profileForm.valid">Mentés</button>
+          <button mat-button color="warn" (click)="toggleEdit(); $event.preventDefault()">Mégse</button>
+        </form>
+      </mat-card-content>
+    }
+
+    <mat-card-actions>
+      @if (!editMode) {
+        <button mat-button color="primary" (click)="toggleEdit()">Szerkesztés</button>
+      }
+    </mat-card-actions>
+  </mat-card>
+} @else {
+  <p>Nincs bejelentkezett felhasználó.</p>
+}

@@ -2,12 +2,13 @@
     <mat-card appearance="outlined" class="card">
         <mat-card-header>
         <mat-card-title>{{ munka?.munkaNeve }}</mat-card-title>
+        <mat-card-subtitle>{{munka?.munkacegNeve |cegneve }}</mat-card-subtitle>
         <mat-card-subtitle>{{ munka?.munkahelyszin ?? ''| pipes  }}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image [src]="munka?.munkafoto" alt="{{ munka?.munkaNeve }} képe" />
         <mat-card-content>
         <p>{{munka?.munkajelentkezesiHatarido}}</p>
         <p>{{ munka?.munkaLeiras }}</p>
+        <p>{{ munka?.munkaber ?? 'Nincs megadva' }}</p>
         </mat-card-content>
         <mat-card-actions>
         <button mat-flat-button [routerLink]="['/home']"  (click)="onApplyJob(); openSnackBar()">Jelentkezés</button>

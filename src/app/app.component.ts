@@ -7,6 +7,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
+import { AuthService } from './components/share/services/auth.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-root',
     imports: [
@@ -25,21 +27,22 @@ import { CommonModule } from '@angular/common';
 export class AppComponent implements OnInit {
   title = 'allaskereso-portal';
   isLoggedIn=false;
-
-  constructor(){}
+  private autSubscription?: Subscription;
+  constructor(private authService: AuthService){}
 
   ngOnInit(): void {
-    this.checkLoginStatus();
+    this.autSubscription = this.authService.currentUser.subscribe(user => {
+    this.isLoggedIn = !!user;
+    localStorage.setItem('isLoggedIn',this.isLoggedIn ? 'true': 'false');
+    });
   }
 
-  checkLoginStatus(): void{
-    this.isLoggedIn =localStorage.getItem('isLoggedIn') ==='true';
+  ngOnDestroy(): void{
+    this.autSubscription?.unsubscribe();
   }
 
   logout(): void{
-    localStorage.setItem('isLoggedIn', 'false');
-    this.isLoggedIn = false;
-    window.location.href = '/home';
+    this.authService.signOut();
   }
 
   onToggleSidenav(sidenav: MatSidenav){
